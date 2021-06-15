@@ -4,7 +4,7 @@ enum SSDKResponseState { Success, Fail, Cancel, Unknown }
 
 /// custom error
 class SSDKError extends Error {
-  SSDKError({this.rawData})
+  SSDKError({required this.rawData})
       : code = rawData != null ? rawData["code"] : 0,
         userInfo = rawData != null ? rawData["userInfo"] : {},
         super();
@@ -15,7 +15,7 @@ class SSDKError extends Error {
 
 /// model for method
 class ShareSDKMethod {
-  ShareSDKMethod({@required this.name, @required this.id})
+  ShareSDKMethod({required this.name, required this.id})
       : assert(name != null && id != null),
         super();
   final String name;
@@ -58,7 +58,7 @@ class ShareSDKMethods {
 }
 
 class ShareSDKPlatform {
-  ShareSDKPlatform({@required this.id, @required this.name})
+  ShareSDKPlatform({required this.id, required this.name})
       : assert(id != null && name != null),
         super();
   final int id;
@@ -176,7 +176,7 @@ class ShareSDKPlatforms {
 
 /// model for FacebookShareType
 class SSDKFacebookShareType {
-  SSDKFacebookShareType({this.value}) : super();
+  SSDKFacebookShareType({required this.value}) : super();
   final int value;
 }
 
@@ -187,7 +187,7 @@ class SSDKFacebookShareTypes extends Object {
 }
 
 class SSDKContentType {
-  SSDKContentType({this.value}) : super();
+  SSDKContentType({required this.value}) : super();
   final int value;
 }
 

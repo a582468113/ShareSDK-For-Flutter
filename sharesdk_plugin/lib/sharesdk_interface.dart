@@ -4,7 +4,7 @@ import './sharesdk_defines.dart';
 import './sharesdk_register.dart';
 import './sharesdk_map.dart';
 
-typedef void EventHandler(Object event);
+typedef void EventHandler(dynamic event);
 
 class SharesdkPlugin {
   static const MethodChannel _channel =
@@ -121,12 +121,11 @@ class SharesdkPlugin {
       SSDKMap params,
       Function(SSDKResponseState, ShareSDKPlatform, Map, Map, SSDKError)
           result) {
-    List types;
+    List types = [];
     if (platforms != null) {
       Iterable<int> ids = platforms.map((ShareSDKPlatform item) => item.id);
       types = List.from(ids);
     }
-
     Map args = {"platforms": types, "params": params.map};
     Future<dynamic> callback =
         _channel.invokeMethod(ShareSDKMethods.showMenu.name, args);
